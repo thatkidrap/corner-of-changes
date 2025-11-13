@@ -20,7 +20,12 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Corner of Changes",
   description: "Pengelolaan Limbah Kosmetik Berkelanjutan",
-    generator: 'v0.app'
+    generator: 'v0.app',
+    icons: {
+      icon: '/trash-bin.svg',
+      shortcut: '/trash-bin.svg',
+      apple: '/trash-bin.svg',
+    },
 }
 
 export const viewport: Viewport = {
@@ -35,7 +40,7 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }) {
   return (
     <html lang="id" suppressHydrationWarning>
