@@ -10,8 +10,8 @@ export default function Navigation() {
   const navItems = [
     { label: "Beranda", href: "#home" },
     { label: "Tentang Kami", href: "#about" },
-    { label: "Kegiatan", href: "#activities" },
     { label: "Lokasi", href: "#maps" },
+    { label: "Kegiatan", href: "#activities" },
     { label: "Kontak", href: "#contact" },
   ]
 
