@@ -11,6 +11,7 @@ export default function Navigation() {
     { label: "Beranda", href: "#home" },
     { label: "Tentang Kami", href: "#about" },
     { label: "Kegiatan", href: "#activities" },
+    { label: "Lokasi", href: "#maps" },
     { label: "Kontak", href: "#contact" },
   ]
 
@@ -55,23 +56,44 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Modern Popup */}
         {isOpen && (
-          <div className="md:hidden border-t border-border py-4 space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block px-4 py-2 text-foreground hover:bg-muted rounded-lg transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link href="#contact" className="block btn-primary text-center">
-              Hubungi Kami
-            </Link>
-          </div>
+          <>
+            {/* Backdrop */}
+            <button
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"
+              onClick={() => setIsOpen(false)}
+              onKeyDown={(e) => e.key === "Escape" && setIsOpen(false)}
+              aria-label="Close menu"
+            />
+            
+            {/* Popup Menu */}
+            <div className="fixed top-16 right-4 left-4 md:hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+              <div className="bg-card border border-border rounded-3xl p-6 shadow-2xl backdrop-blur-xl space-y-3">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-5 py-3 text-foreground font-medium hover:bg-primary/10 hover:text-primary rounded-2xl transition-all duration-200 active:scale-95"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                
+                {/* Divider */}
+                <div className="h-px bg-border/40 my-2" />
+                
+                <Link 
+                  href="#contact" 
+                  className="block btn-primary text-center rounded-2xl font-medium transition-all duration-200 active:scale-95"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Hubungi Kami
+                </Link>
+              </div>
+            </div>
+          </>
         )}
       </nav>
     </header>

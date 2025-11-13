@@ -3,6 +3,7 @@ import About from "@/components/sections/about"
 import VisionMission from "@/components/sections/vision-mission"
 import Activities from "@/components/sections/activities"
 import Contact from "@/components/sections/contact"
+import Maps from "@/components/sections/maps"
 
 export const metadata = {
   title: "Corner of Changes | Pengelolaan Limbah Kosmetik Berkelanjutan",
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <About />
       <VisionMission />
+      <Maps />
       <Activities />
       <Contact />
     </main>
