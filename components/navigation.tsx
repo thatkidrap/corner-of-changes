@@ -1,11 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
     { label: "Beranda", href: "#home" },
@@ -16,13 +26,21 @@ export default function Navigation() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-      <nav className="container-custom">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? "bg-background/80 backdrop-blur-xl border-0 py-2" 
+        : "bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 border-b border-border py-0"
+    }`}>
+      <nav className={`transition-all duration-300 ${
+        isScrolled 
+          ? "mx-4 sm:mx-6 lg:mx-auto rounded-2xl px-6 py-3 max-w-6xl border border-primary/30 bg-background/90 shadow-lg" 
+          : "container-custom"
+      }`}>
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link href="#" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-serif font-bold text-lg">C</span>
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+              <img src="/trash-bin.svg" alt="Corner of Changes Logo" className="w-10 h-10 object-contain" />
             </div>
             <span className="font-serif font-bold text-xl hidden sm:inline text-foreground">Corner of Changes</span>
           </Link>

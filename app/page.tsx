@@ -16,6 +16,11 @@ export const metadata = {
     description: "Fasilitator pengumpulan limbah B3 ringan dari produk kosmetik.",
     url: "https://cornerofchanges.org",
     type: "website",
+    icons: {
+      icon: "/trash-bin.svg",
+      shortcut: "/trash-bin.svg",
+      apple: "/trash-bin.svg",
+    }
   },
 }
 
