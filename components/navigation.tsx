@@ -43,7 +43,7 @@ export default function Navigation() {
               <img src="/trash-bin.svg" alt="Corner of Changes Logo" className="w-10 h-10 object-contain" />
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="font-serif font-bold text-base sm:text-lg lg:text-xl text-foreground">Corner of Changes</span>
+              <span className="font-serif font-bold text-base sm:text-lg lg:text-xl text-foreground">Corner of Change</span>
               {/* Static tagline for small screens (hidden on md+) */}
               <span className="mt-0.5 hidden sm:block md:hidden text-[11px] sm:text-xs text-foreground/70 leading-snug max-w-56 truncate" title="Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya">
                 Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya
