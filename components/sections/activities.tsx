@@ -58,7 +58,7 @@ export default function Activities() {
                   <span className="text-sm font-medium text-foreground/60">{activity.date}</span>
                 </div>
                 <h3 className="font-serif font-semibold text-xl mb-3">{activity.title}</h3>
-                <p className="text-foreground/70 leading-relaxed">{activity.description}</p>
+                <p className="text-foreground/70 leading-relaxed text-justify">{activity.description}</p>
               </div>
             )
           })}

@@ -51,8 +51,8 @@ export default function VisionMission() {
                 >
                   <Icon size={28} />
                 </div>
-                <h3 className="font-serif font-bold text-xl mb-3">{item.title}</h3>
-                <p className="text-foreground/70 leading-relaxed">{item.description}</p>
+                <h3 className="font-serif font-bold text-xl mb-3 ">{item.title}</h3>
+                <p className="text-foreground/70 leading-relaxed text-justify">{item.description}</p>
               </div>
             )
           })}

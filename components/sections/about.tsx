@@ -43,7 +43,7 @@ export default function About() {
                   <Icon size={20} className="sm:w-6 sm:h-6 text-primary" />
                 </div>
                 <h3 className="font-serif font-semibold text-sm sm:text-base">{point.title}</h3>
-                <p className="text-foreground/70 text-xs sm:text-sm">{point.description}</p>
+                <p className="text-foreground/70 text-xs sm:text-sm text-justify">{point.description}</p>
               </div>
             )
           })}

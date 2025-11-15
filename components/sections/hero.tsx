@@ -90,7 +90,7 @@ export default function Hero() {
 
               {/* Right Description */}
               <div className="text-center lg:text-left order-2 lg:order-2">
-                <p className="text-base md:text-lg lg:text-xl text-foreground/80 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <p className="text-base md:text-lg lg:text-xl text-foreground/80 leading-relaxed max-w-2xl mx-auto lg:mx-0 text-justify">
                   Corner of Change adalah inisiatif mahasiswa FISIP Universitas Brawijaya untuk menciptakan sistem
                   pengelolaan empties wadah kosong kosmetik dan produk perawatan tubuh yang aman, mudah, dan ramah
                   lingkungan.
