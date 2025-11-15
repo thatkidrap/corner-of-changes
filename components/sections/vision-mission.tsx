@@ -7,7 +7,7 @@ export default function VisionMission() {
     {
       icon: Eye,
       title: "Visi",
-      description: "Mewujudkan masyarakat sadar lingkungan melalui pengelolaan limbah kosmetik berkelanjutan.",
+      description: "Terwujudnya lingkungan FISIP UB yang bersih, aman, dan bebas pencemaran akibat limbah empties B3 melalui tata kelola kolaboratif yang berkelanjutan, sekaligus mewujudkan kesadaran atas lingkungan melalui pengelolaan limbah kosmetik secara bertanggung jawab dan berkelanjutan.",
       color: "from-primary/10 to-primary/5",
       accentColor: "text-primary",
     },
@@ -15,14 +15,14 @@ export default function VisionMission() {
       icon: Target,
       title: "Misi",
       description:
-        "Menyediakan wadah pengumpulan limbah kosmetik, mengedukasi masyarakat, dan bekerja sama dengan brand kecantikan.",
+        "Membangun sistem pengelolaan empties B3 yang aman, terintegrasi, dan berkelanjutan melalui kolaborasi antara kampus, masyarakat, dan pemerintah untuk menciptakan lingkungan FISIP UB yang bersih serta mendorong kesadaran lingkungan yang bertanggung jawab.",
       color: "from-secondary/10 to-secondary/5",
       accentColor: "text-secondary",
     },
     {
       icon: Heart,
       title: "Nilai Kami",
-      description: "Kolaborasi, Kepedulian, dan Keberlanjutan adalah fondasi setiap keputusan yang kami ambil.",
+      description: "Menjunjung tinggi tanggung jawab, kolaborasi, dan inovasi dalam mewujudkan pengelolaan empties B3 yang berkelanjutan, transparan, dan berorientasi pada kesadaran lingkungan.",
       color: "from-accent/10 to-accent/5",
       accentColor: "text-accent",
     },

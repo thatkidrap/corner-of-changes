@@ -2,58 +2,93 @@
 
 import Link from "next/link"
 import { ArrowRight, Leaf } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export default function Hero() {
+  const [displayedText, setDisplayedText] = useState("")
+  const fullText = "let's make change happen together."
+  const [isTypingComplete, setIsTypingComplete] = useState(false)
+
+  useEffect(() => {
+    let currentIndex = 0
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex))
+        currentIndex++
+      } else {
+        setIsTypingComplete(true)
+        clearInterval(typingInterval)
+      }
+    }, 80) // Adjust speed here (lower = faster)
+
+    return () => clearInterval(typingInterval)
+  }, [])
+
   return (
-    <section id="home" className="min-h-[90vh] flex items-center pt-20">
+    <section
+      id="home"
+      className="min-h-[90vh] flex items-center pt-20 bg-background text-foreground"
+    >
       <div className="container-custom w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 text-primary font-medium">
-                <Leaf size={20} />
-                <span>Gerakan Keberlanjutan</span>
-              </div>
-              <h1 className="text-foreground">Selamat Datang di Corner of Changes</h1>
-              <p className="text-lg text-foreground/70 leading-relaxed">
-                Kami merupakan fasilitator yang menyediakan wadah pengumpulan limbah B3 ringan, khususnya dari produk
-                kosmetik seperti body care, skincare, dan parfum.
-              </p>
+        <div className="max-w-7xl mx-auto">
+          <div className="space-y-12 md:space-y-16">
+            {/* Top Label */}
+            <div className="flex items-center justify-center gap-2 text-primary font-medium text-sm sm:text-base">
+              <Leaf size={20} className="sm:w-6 sm:h-6" />
+              <span>Gerakan Keberlanjutan</span>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="#activities" className="btn-primary">
+            {/* Main Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              {/* Left Title */}
+              <div className="space-y-4 text-center lg:text-left order-1 lg:order-1">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+                  Glad you're here.
+                </h1>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-primary min-h-[1.2em] flex items-center">
+                  <span className="inline-block">
+                    {displayedText}
+                    {!isTypingComplete && (
+                      <span className="animate-pulse text-primary">|</span>
+                    )}
+                  </span>
+                </h2>
+              </div>
+
+              {/* Right Description */}
+              <div className="text-center lg:text-left order-2 lg:order-2">
+                <p className="text-base md:text-lg lg:text-xl text-foreground/80 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                  Corner of Change adalah inisiatif mahasiswa FISIP Universitas Brawijaya untuk menciptakan sistem
+                  pengelolaan empties wadah kosong kosmetik dan produk perawatan tubuh yang aman, mudah, dan ramah
+                  lingkungan.
+                  <br /><br />
+                  Melalui fasilitas pengumpulan empties, sistem pelaporan digital berbasis QR, dan kolaborasi lintas
+                  pihak, kami berupaya membangun budaya peduli lingkungan sebagai aksi nyata bersama di setiap sudut
+                  perubahan.
+                </p>
+              </div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start">
+              <Link href="#activities" className="btn-primary inline-flex items-center justify-center text-base font-medium px-8 py-4">
                 <span>Lihat Kegiatan</span>
-                <ArrowRight size={20} className="ml-2" />
+                <ArrowRight size={20} className="ml-3" />
               </Link>
-              <Link href="#about" className="btn-outline">
+              <Link href="#about" className="btn-outline inline-flex items-center justify-center text-base font-medium px-8 py-4">
                 Pelajari Lebih Lanjut
               </Link>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 pt-8">
-              <div className="space-y-2">
-                <p className="text-3xl font-bold text-primary font-serif">2024</p>
-                <p className="text-foreground/70 text-sm">Tahun Didirikan</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12 pt-12 max-w-3xl mx-auto lg:mx-0">
+              <div className="space-y-2 text-center lg:text-left">
+                <p className="text-3xl sm:text-4xl font-bold text-primary font-serif">Developed by</p>
+                <p className="text-foreground/60 text-sm sm:text-base font-medium">Kelompok Kewirausahaan Politik</p>
               </div>
-              <div className="space-y-2">
-                <p className="text-3xl font-bold text-primary font-serif">50+</p>
-                <p className="text-foreground/70 text-sm">Relawan Aktif</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Visual */}
-          <div className="relative h-96 md:h-[500px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-2xl"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
-                  <Leaf size={40} className="text-primary" />
-                </div>
-                <p className="text-foreground/60 font-medium">Perubahan Besar Berawal dari Langkah Kecil</p>
+              <div className="space-y-2 text-center lg:text-left">
+                <p className="text-3xl sm:text-4xl font-bold text-primary font-serif">2025</p>
+                <p className="text-foreground/60 text-sm sm:text-base font-medium">Tahun Didirikan</p>
               </div>
             </div>
           </div>

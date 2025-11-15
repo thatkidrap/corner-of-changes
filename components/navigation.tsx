@@ -36,17 +36,29 @@ export default function Navigation() {
           ? "mx-4 sm:mx-6 lg:mx-auto rounded-2xl px-6 py-3 max-w-6xl border border-primary/30 bg-background/90 shadow-lg" 
           : "container-custom"
       }`}>
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-4 flex-wrap md:flex-nowrap gap-3 md:gap-0">
           {/* Logo */}
-          <Link href="#" className="flex items-center gap-2">
+          <Link href="#" className="flex items-center gap-3 min-w-0" aria-label="Corner of Changes - Home">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center">
               <img src="/trash-bin.svg" alt="Corner of Changes Logo" className="w-10 h-10 object-contain" />
             </div>
-            <span className="font-serif font-bold text-xl hidden sm:inline text-foreground">Corner of Changes</span>
+            <div className="flex flex-col min-w-0">
+              <span className="font-serif font-bold text-base sm:text-lg lg:text-xl text-foreground">Corner of Changes</span>
+              {/* Static tagline for small screens (hidden on md+) */}
+              <span className="mt-0.5 hidden sm:block md:hidden text-[11px] sm:text-xs text-foreground/70 leading-snug max-w-56 truncate" title="Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya">
+                Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya
+              </span>
+              {/* Running marquee for md+ */}
+              <div className="marquee-container mt-1 hidden md:block max-w-64 lg:max-w-[360px]" aria-hidden>
+                <div className="marquee text-[10px] sm:text-[11px] md:text-xs lg:text-sm text-primary/70">
+                  Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya.
+                </div>
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-5 lg:gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -60,12 +72,16 @@ export default function Navigation() {
 
           {/* CTA Button & Mobile Menu */}
           <div className="flex items-center gap-4">
-            <Link href="#contact" className="hidden sm:block btn-primary text-sm">
+            <Link href="#contact" className="hidden lg:block btn-primary text-sm">
               Hubungi Kami
             </Link>
 
             {/* Mobile Menu Button */}
             <button
+              type="button"
+              aria-controls="mobile-nav"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Tutup menu" : "Buka menu"}
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
             >
@@ -86,7 +102,7 @@ export default function Navigation() {
             />
             
             {/* Popup Menu */}
-            <div className="fixed top-16 right-4 left-4 md:hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
+            <div id="mobile-nav" className="fixed top-16 right-4 left-4 md:hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
               <div className="bg-card border border-border rounded-3xl p-6 shadow-2xl backdrop-blur-xl space-y-3">
                 {navItems.map((item) => (
                   <Link

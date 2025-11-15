@@ -54,7 +54,7 @@ export default function Contact() {
               <Mail size={24} className="text-primary" />
             </div>
             <h3 className="font-serif font-semibold text-lg">Email</h3>
-            <p className="text-foreground/70 text-sm sm:text-base break-words">cornerofchanges@gmail.com</p>
+            <p className="text-foreground/70 text-sm sm:text-base break-words">cornerofchange@gmail.com</p>
           </div>
 
           <div className="p-6 sm:p-8 rounded-2xl bg-card border border-border space-y-4">
@@ -70,7 +70,7 @@ export default function Contact() {
               <Send size={24} className="text-accent" />
             </div>
             <h3 className="font-serif font-semibold text-lg">Follow Us</h3>
-            <p className="text-foreground/70 text-sm sm:text-base">@cornerofchanges</p>
+            <p className="text-foreground/70 text-sm sm:text-base">@cornerofchange</p>
           </div>
         </div>
 

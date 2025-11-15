@@ -170,3 +170,27 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Marquee (running text) utility for long subtitles */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee {
+  display: inline-block;
+  will-change: transform;
+  animation: marquee 18s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-container:hover .marquee,
+.marquee:hover {
+  animation-play-state: paused;
+}
+
