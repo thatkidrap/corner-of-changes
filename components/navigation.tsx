@@ -26,14 +26,14 @@ export default function Navigation() {
   ]
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${  
       isScrolled 
-        ? "bg-background/80 backdrop-blur-xl border-0 py-2" 
-        : "bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 border-b border-border py-0"
+        ? "bg-background/10 backdrop-blur-md border-0 py-2" 
+        : "bg-transparent border-0 py-0"
     }`}>
       <nav className={`transition-all duration-300 ${
         isScrolled 
-          ? "mx-4 sm:mx-6 lg:mx-auto rounded-2xl px-6 py-3 max-w-6xl border border-primary/30 bg-background/90 shadow-lg" 
+          ? "mx-4 sm:mx-6 lg:mx-auto rounded-2xl px-6 py-3 max-w-6xl border border-white/10 bg-background/20 backdrop-blur-md shadow-lg" 
           : "container-custom"
       }`}>
         <div className="flex items-center justify-between py-4 flex-wrap md:flex-nowrap gap-3 md:gap-0">
@@ -43,9 +43,9 @@ export default function Navigation() {
               <img src="/trash-bin.svg" alt="Corner of Changes Logo" className="w-10 h-10 object-contain" />
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="font-serif font-bold text-base sm:text-lg lg:text-xl text-foreground">Corner of Change</span>
+              <span className="font-serif font-bold text-base sm:text-lg lg:text-xl text-foreground drop-shadow-sm">Corner of Change</span>
               {/* Static tagline for small screens (hidden on md+) */}
-              <span className="mt-0.5 hidden sm:block md:hidden text-[11px] sm:text-xs text-foreground/70 leading-snug max-w-56 truncate" title="Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya">
+              <span className="mt-0.5 hidden sm:block md:hidden text-[11px] sm:text-xs text-foreground/80 leading-snug max-w-56 truncate drop-shadow-sm" title="Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya">
                 Creative Governance Model for Campus-Based Waste Management at FISIP Universitas Brawijaya
               </span>
               {/* Running marquee for md+ */}
@@ -63,7 +63,7 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="text-sm font-medium text-foreground/90 hover:text-primary transition-colors drop-shadow-sm"
               >
                 {item.label}
               </Link>
@@ -95,7 +95,7 @@ export default function Navigation() {
           <>
             {/* Backdrop */}
             <button
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden z-40"
               onClick={() => setIsOpen(false)}
               onKeyDown={(e) => e.key === "Escape" && setIsOpen(false)}
               aria-label="Close menu"
@@ -103,7 +103,7 @@ export default function Navigation() {
             
             {/* Popup Menu */}
             <div id="mobile-nav" className="fixed top-16 right-4 left-4 md:hidden z-50 animate-in fade-in slide-in-from-top-2 duration-300">
-              <div className="bg-card border border-border rounded-3xl p-6 shadow-2xl backdrop-blur-xl space-y-3">
+              <div className="bg-background/95 border border-white/20 rounded-3xl p-6 shadow-2xl backdrop-blur-xl space-y-3">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}

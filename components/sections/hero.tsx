@@ -8,6 +8,7 @@ export default function Hero() {
   const [displayedText, setDisplayedText] = useState("")
   const fullText = "let's make change happen together."
   const [isTypingComplete, setIsTypingComplete] = useState(false)
+  const [scrollOpacity, setScrollOpacity] = useState(0.2)
 
   useEffect(() => {
     let currentIndex = 0
@@ -24,12 +25,44 @@ export default function Hero() {
     return () => clearInterval(typingInterval)
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      const windowHeight = window.innerHeight
+      const heroHeight = windowHeight * 0.9 // 90vh
+      
+      // Calculate opacity based on scroll position
+      // Opacity decreases as we scroll down
+      const scrollProgress = Math.min(scrollPosition / heroHeight, 1)
+      const newOpacity = Math.max(0.2 - (scrollProgress * 0.2), 0)
+      
+      setScrollOpacity(newOpacity)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll() // Initial call
+    
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
     <section
       id="home"
-      className="min-h-[90vh] flex items-center pt-20 bg-background text-foreground"
+      className="min-h-[90vh] flex items-center pt-20 bg-background text-foreground relative overflow-hidden"
     >
-      <div className="container-custom w-full">
+      {/* Background Image with Scroll-based Opacity */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ease-out"
+        style={{
+          backgroundImage: 'url(/bg-hero.jpg)',
+          opacity: scrollOpacity,
+        }}
+      />
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/30" />
+      
+      {/* Content */}
+      <div className="container-custom w-full relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="space-y-12 md:space-y-16">
             {/* Top Label */}
